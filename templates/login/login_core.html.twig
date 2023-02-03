@@ -10,7 +10,7 @@
            data-callback="onSignInSuccess" data-auto_prompt="false">
         </div>
     {% endif %}
- 
+
     <title>{{ title|text }} {{ "Login"|xlt }}</title>
     {% block head %}{% endblock %}
     <script src="{{ webroot|attr }}/interface/product_registration/product_registration_service.js?v={{ assetVersion|attr }}"></script>
@@ -132,50 +132,10 @@
             </div>
 
             <div class="{{ logoArea|attr }}">
-                {% if displayExtraLogo %}
-                <div class="text-center">
-                    <span class="d-inline-block w-40">
-                        {{ primaryLogoSrc|raw }}
-                    </span>
-                    <span class="d-inline-block w-15 login-bg-text-color"><i class="fas fa-plus fa-2x"></i></span>
-                    <span class="d-inline-block w-40">
-                        {{ logocode }}
-                    </span>
+                <div class="row mb-3">
+                    <div class="col-md-12">{{ logocode }}</div>
                 </div>
-                {% else %}
-                <div class="mx-auto m-4 w-75">
-                    {{ primaryLogoSrc|raw }}
-                </div>
-                {% endif %}
-
-                {% if displayLoginLabel %}
-                <div class="text-center login-title-label">
-                        {{ title|text }}
-                    </div>
-                {% endif %}
-
-                {% if displayTinyLogo == 1 %}
-                    {{ tinyLogo1 }}
-                {% endif %}
-                {% if displayTinyLogo == 2 %}
-                    {{ tinyLogo2 }}
-                {% endif %}
-                {% if displayTinyLogo == 3 %}
-                    <div class="row mb-3">
-                        <div class="col-sm-6">{{ tinyLogo1 }}</div>
-                        <div class="col-sm-6">{{ tinyLogo2 }}</div>
-                    </div>
-                {% endif %}
-
-                {% if displayTagline %}
-                    <p class="text-center text-white lead">{{ tagline|xlt }}</p>
-                {% endif %}
-
-                {% if displayAck %}
-                    <p class="text-center small"><a href="../../acknowledge_license_cert.html" class="text-white" target="main">{{ "Acknowledgments, Licensing and Certification"|xlt }}</a></p>
-                {% endif %}
             </div>
-        </div>
         <div class="product-registration-modal modal fade">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -216,7 +176,7 @@
     // When Google sign-in successful, sign in to the app, but only
     // if the button was clicked (otherwise we would automatically login)
     function onSignInSuccess(googleUser) {
-        
+
             const id_token = googleUser.credential;
             $('.login-failure').hide();
             $('#used-google-signin').val(true);
@@ -225,7 +185,7 @@
             $('#standard-auth-username, #standard-auth-password').hide();
             var element = document.getElementById('login-button');
             transmit_form(element);
-        
+
     }
 
     function onSignInFailure(error) {
